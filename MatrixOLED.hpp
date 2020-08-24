@@ -8,7 +8,7 @@ Last Edit Date: 7/3/2020
 
 // All the libraries we need to write our interface. 
 #include "Arduino.h"
-#include "ChRt.h"
+#include "OS/OSThreadKernel.h"
 #include "SPI.h"
 
 // These #defines are DEPRECATED but present for older code compatibility:

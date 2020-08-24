@@ -1,6 +1,6 @@
 /*
 Author: William Redenbaugh
-Last Edit Date: 7/3/2020
+Last Edit Date: 7/20/2020
 */
 
 #include "MatrixOLED.hpp"
@@ -86,15 +86,15 @@ void MatrixOLED::begin(void){
     
     // Lets display reset if needed. 
     this->rst_low();
-    chThdSleepMilliseconds(20);
+    os_thread_delay_ms(20);
     this->rst_high();
-    chThdSleepMilliseconds(20);
+    os_thread_delay_ms(20);
     this->rst_low();
-    chThdSleepMilliseconds(20);
+    os_thread_delay_ms(20);
     this->rst_high();
-    chThdSleepMilliseconds(20);
+    os_thread_delay_ms(20);
     this->rst_low();
-    chThdSleepMilliseconds(20);
+    os_thread_delay_ms(20);
     this->rst_high();
 
     SPI.begin();
@@ -149,7 +149,7 @@ void MatrixOLED::fill_screen(uint16_t color){
     SPI.transfer(out_arr, NULL, 32768, dma_event);
 
     // Should take about this long to push up animation, so we can sleep the thread in the meantime. 
-    chThdSleepMilliseconds(9);
+    os_thread_delay_ms(9);
     
     this->end_write();
 }
@@ -535,7 +535,7 @@ void MatrixOLED::draw_queue(void){
   SPI.transfer(out_arr, NULL, 32768, dma_event);
 
   // Should take about this long to push up animation
-  chThdSleepMilliseconds(9);
+  os_thread_delay_ms(9);
   end_write();
 }
 
@@ -685,14 +685,14 @@ void MatrixOLED::set_address_window(uint16_t x1, uint16_t y1, uint16_t w, uint16
     out_arr[0] = x1; 
     out_arr[1] = x2; 
     SPI.transfer(out_arr, NULL, 2, dma_event);
-    chThdSleepMicroseconds(2);
+    delayMicroseconds(2);
 
     write_command(SSD1351_CMD_SETROW); // Y range
 
     out_arr[0] = y1; 
     out_arr[1] = y2; 
     SPI.transfer(out_arr,NULL, 2, dma_event);
-    chThdSleepMicroseconds(2);
+    delayMicroseconds(2);
 
     write_command(SSD1351_CMD_WRITERAM); // Begin write
 }
