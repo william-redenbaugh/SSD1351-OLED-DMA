@@ -82,6 +82,16 @@ class MatrixOLED{
         // Allows us to actually draw the character 
         void draw_queue(void);
         
+        // Pointer to our array data. 
+        uint8_t *out_array_ptr(void){
+            return out_arr; 
+        }
+
+        // Size of our array
+        uint32_t out_array_size(void){
+            return 32768; 
+        }
+
         // INFO KEEP FRAMEBUFFER END // 
 
         void set_rotation(uint8_t rot);
