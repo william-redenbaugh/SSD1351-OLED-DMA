@@ -121,7 +121,7 @@ class MatrixOLED{
         SPISettings settings; 
 
         // Buffers needed for async transfer.         
-        uint8_t out_arr[32768];
+        uint8_t *out_arr;
         
         // DMA event responder.
         EventResponder dma_event;

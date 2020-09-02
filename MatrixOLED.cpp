@@ -83,7 +83,14 @@ void MatrixOLED::begin(void){
     pinMode(OLED_pin_dc_rs, OUTPUT);
     pinMode(OLED_pin_scl_sck, OUTPUT);
     pinMode(OLED_pin_sda_mosi, OUTPUT);
-    
+
+    // Allocating array on heap since by default HEAP is on bank 2. 
+    // This helps with DMA transfers and other runtime stuff since we can now
+    // Keep TCM memory as free and empty as possible
+    this->out_arr = (uint8_t*)malloc(36768 * sizeof(uint8_t));
+    // Since often the heap is filled with garbage we just zero it out to have an empty array. 
+    memset(out_arr, 0, 36768); 
+
     // Lets display reset if needed. 
     this->rst_low();
     os_thread_delay_ms(20);
