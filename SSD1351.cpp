@@ -1,5 +1,7 @@
 #include "SSD1351.h"
 
+#ifdef USE_SSD1351_DRIVERS
+
 // GFX Font from AdafruitGFX Library, so I can do font stuff. 
 #include "glcdfont.c"
 
@@ -785,3 +787,5 @@ void MatrixOLED::end_write(void){
     this->cs_high();
     SPI.endTransaction();
 }
+
+#endif 

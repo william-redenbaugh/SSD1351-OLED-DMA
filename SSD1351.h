@@ -1,9 +1,9 @@
 #ifndef SSD1351_H
 #define SSD1351_H
 
+#ifdef USE_SSD1351_DRIVERS
 #include <Arduino.h>
 #include "OS/OSThreadKernel.h"
-#include "SPI.h"
 
 // These #defines are DEPRECATED but present for older code compatibility:
 #define SSD1351WIDTH 128  ///< DEPRECATED screen width
@@ -126,4 +126,5 @@ class MatrixOLED{
         uint8_t rotation = 0; 
 };
 
+#endif
 #endif 
