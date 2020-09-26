@@ -1,7 +1,10 @@
 #ifndef SSD1351_H
 #define SSD1351_H
 
-#ifdef USE_SSD1351_DRIVERS
+// So we can configure modules
+#include "../../../enabled_modules.h"
+
+#ifdef SSD1351_MODULE
 #include <Arduino.h>
 #include "OS/OSThreadKernel.h"
 

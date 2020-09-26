@@ -1,6 +1,6 @@
 #include "SSD1351.h"
 
-#ifdef USE_SSD1351_DRIVERS
+#ifdef SSD1351_MODULE
 
 // GFX Font from AdafruitGFX Library, so I can do font stuff. 
 #include "glcdfont.c"
