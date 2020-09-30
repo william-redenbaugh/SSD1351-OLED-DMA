@@ -2,7 +2,7 @@
 #define SSD1351_H
 
 // So we can configure modules
-#include "../../../enabled_modules.h"
+#include "../../enabled_modules.h"
 
 #ifdef SSD1351_MODULE
 #include <Arduino.h>
